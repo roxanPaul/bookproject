@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<style>
+    body {
+        display: flex;
+        justify-content: center; /* Horizontally center content */
+        align-items: center; /* Vertically center content */
+        height: 100vh; /* Full height of viewport */
+        margin: 0; /* Remove default margin */
+    }
+
+    .form-container {
+        width: 300px; /* Adjust width of form container */
+        padding: 20px; /* Add padding for spacing */
+        border: 1px solid #ccc; /* Add border for visualization */
+        border-radius: 5px; /* Add border radius for styling */
+        background-color: #f9f9f9; /* Add background color */
+    }
+</style>
+
+</head>
+<body>
+
+{% for msg in messages %}
+{{ msg }}
+{% endfor %}
+<div class="form-container">
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+    <label for="" class="form-label">User Name</label>
+    <input type="username" class="form-control" id="username" aria-describedby="">
+
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1">
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+</div>
+</body>
+</html>
+

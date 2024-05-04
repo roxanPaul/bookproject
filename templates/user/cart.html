@@ -1,0 +1,54 @@
+
+{% extends 'authors/base.html' %}
+{% load static %}
+{% block content %}
+
+
+{% if not cart_items %}
+<p>Your cart is empty </p>
+{% endif %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Book Name</th>
+      <th scope="col">Author</th>
+      <th scope="col">Price</th>
+       <th scope="col">Action</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for item in cart_items %}
+    <tr>
+        <th scope="row">1</th>
+        <td>{{ item.book.title }}</td>
+        <td>{{ item.book.author }}</td>
+        <td>{{ item.book.price }}</td>
+        <td><a href="{% url 'remove_cart' item.id %}">Remove</a></td>
+        <td>
+            {% if item.quantity > 1 %}
+                <a href="{% url 'decrease_quantity' item.id %}">Decrease</a>
+            {% endif %}
+        </td>
+        <td><input type="number" name="quantity" value="{{ item.quantity }}">Quantity</td>
+        <td><a href="{% url 'increase_quantity' item.id %}">Increase</a></td>
+    </tr>
+{% endfor %}
+
+  </tbody>
+</table>
+
+<form action="{% url 'create-checkout-session' %} " method="post">
+    {% csrf_token %}
+
+<div class="card" style="width:18rcm;">
+    <div class="card-body">
+        <h5 class="card-title">Total Products:{{ total_items }}</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">Total-Price:{{ total_price }}</h6>
+         <button id="checkout-button" type="submit" class="card-link">Check Out</button>
+    </div>
+
+</div>
+</form>
+{% endblock %}

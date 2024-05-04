@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+    body {
+        display: flex;
+        justify-content: center; /* Horizontally center content */
+        align-items: center; /* Vertically center content */
+        height: 100vh; /* Full height of viewport */
+        margin: 0; /* Remove default margin */
+    }
+         .btn {
+        font-size: 24px; /* Increase font size */
+        padding: 15px 30px; /* Increase padding */
+    }
+</style>
+
+</head>
+<body>
+
+<table>
+    <tr>
+ <h1>Welcome To the BookApp</h1>
+    </tr>
+    <tr>
+         <a href="{% url 'register' %}" class="btn btn-primary" style="text-decoration: none;">
+             <button class="btn btn-outline-success" type="button">Register</button></a>
+    </tr>
+    <tr>
+         <a href="{% url 'login' %}" class="btn btn-primary" style="text-decoration: none;">
+             <button class="btn btn-outline-success" type="button">Login</button></a>
+
+    </tr>
+</table>
+</body>
+</html>
